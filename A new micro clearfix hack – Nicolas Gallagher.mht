@@ -1,0 +1,1012 @@
+From: "Saved by Internet Explorer 11"
+Subject: =?Windows-1252?Q?A_new_micro_clearfix_hack_=96_Nicolas_Gallagher?=
+Date: Sat, 27 Jan 2018 20:02:00 -0500
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_000E_01D397A9.B14C2120"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.24000
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_000E_01D397A9.B14C2120
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://nicolasgallagher.com/micro-clearfix-hack/
+
+=EF=BB=BF<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "" ""><HTML lang=3D"en"><HEAD><META =
+content=3D"IE=3D11.0000"=20
+http-equiv=3D"X-UA-Compatible">
+
+<META charset=3D"utf-8"> <TITLE>A new micro clearfix hack =E2=80=93 =
+Nicolas=20
+Gallagher</TITLE>=20
+<META name=3D"viewport" =
+content=3D"width=3Ddevice-width,initial-scale=3D1">=20
+<META content=3D"A new micro clearfix hack =E2=80=93 Nicolas Gallagher" =
+property=3D"og:title">=20
+<META content=3D"The canonical way to contain floats without extra =
+markup"=20
+property=3D"og:description">=20
+<META =
+content=3D"http://www.gravatar.com/avatar/9eecfabc23fd999927fa7989a7eaff5=
+f.png?v=3D2&amp;s=3D300"=20
+property=3D"og:image">=20
+<META content=3D"24974216" property=3D"twitter:account_id">=20
+<META name=3D"twitter:card" content=3D"summary">=20
+<META name=3D"twitter:site" content=3D"@necolas">=20
+<META name=3D"twitter:creator" content=3D"@necolas">=20
+<SCRIPT>=0A=
+  // Google Analytics=0A=
+  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=3Dl;b[l]||(b[l]=3D=0A=
+  function(){(b[l].q=3Db[l].q||[]).push(arguments)});b[l].l=3D+new Date;=0A=
+  e=3Do.createElement(i);r=3Do.getElementsByTagName(i)[0];=0A=
+  e.src=3D'//www.google-analytics.com/analytics.js';=0A=
+  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));=0A=
+  ga('create','UA-7489188-1');ga('send','pageview');=0A=
+</SCRIPT>
+ <!--[if IE 8]><script =
+src=3D"/html5.d401792972cc77413e83a6fe2f94fee3.js"></script><![endif]--> =
+
+<LINK =
+href=3D"http://nicolasgallagher.com/build.9d09d166411d42ca9c128150826b010=
+f.css"=20
+rel=3D"stylesheet">=20
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.18894"></HEAD>
+<BODY><HEADER class=3D"Header" role=3D"banner">  =20
+<DIV class=3D"Container">
+<DIV class=3D"Header-logo"><A href=3D"http://nicolasgallagher.com/"><IMG =
+width=3D"50"=20
+height=3D"50" alt=3D"" =
+src=3D"http://www.gravatar.com/avatar/9eecfabc23fd999927fa7989a7eaff5f.pn=
+g?v=3D3&amp;s=3D50">=20
+        <SPAN class=3D"Header-prompt">Read more posts</SPAN>       </A>  =
+  =20
+</DIV></DIV></HEADER>
+<DIV class=3D"Content" role=3D"main">
+<STYLE>=0A=
+  .Article-coverImage {=0A=
+    =0A=
+    =0A=
+    =0A=
+  }=0A=
+</STYLE>
+ <ARTICLE class=3D"Article">
+<DIV class=3D"Container"><HEADER class=3D"Article-header">
+<DIV class=3D"Article-data"><time class=3D"Article-timestamp Timestamp" =
+datetime=3D"2011-04-21">April=20
+21, 2011</time>       </DIV>
+<H1 class=3D"Article-title">A new micro clearfix =
+hack</H1></HEADER></DIV>
+<DIV class=3D"Container">
+<DIV class=3D"Article-body">
+<P>The clearfix hack is a popular way to contain floats without =
+resorting to=20
+using presentational markup. This article presents an update to the =
+clearfix=20
+method that further reduces the amount of CSS required.</P>
+<P><STRONG>Demo: <A=20
+href=3D"http://nicolasgallagher.com/micro-clearfix-hack/demo/">Micro =
+clearfix=20
+hack</A></STRONG></P>
+<P><I>Known support</I>: Firefox 3.5+, Safari 4+, Chrome, Opera 9+, IE =
+6+</P>
+<P>The =E2=80=9Cmicro clearfix=E2=80=9D method is suitable for modern =
+browsers and builds upon=20
+<A =
+href=3D"http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflow=
+hidden-demystified/">Thierry=20
+Koblentz=E2=80=99s =E2=80=9Cclearfix reloaded=E2=80=9D</A>, which =
+introduced the use of both the=20
+<CODE>:before</CODE> and <CODE>:after</CODE> pseudo-elements.</P>
+<P>Here is the updated code (I=E2=80=99ve used a shorter class name =
+too):</P>
+<PRE><CODE class=3D"lang-css"><SPAN class=3D"comment">/**=0A=
+ * For modern browsers=0A=
+ * 1. The space content is one way to avoid an Opera bug when the=0A=
+ *    contenteditable attribute is included anywhere else in the =
+document.=0A=
+ *    Otherwise it causes space to appear at the top and bottom of =
+elements=0A=
+ *    that are clearfixed.=0A=
+ * 2. The use of `table` rather than `block` is only necessary if using=0A=
+ *    `:before` to contain the top-margins of child elements.=0A=
+ */</SPAN>=0A=
+<SPAN class=3D"class">.cf</SPAN><SPAN class=3D"pseudo">:before</SPAN>,=0A=
+<SPAN class=3D"class">.cf</SPAN><SPAN class=3D"pseudo">:after</SPAN> =
+<SPAN class=3D"rules">{=0A=
+    <SPAN class=3D"rule"><SPAN class=3D"attribute">content</SPAN>:<SPAN =
+class=3D"value"> <SPAN class=3D"string">" "</SPAN></SPAN></SPAN>; <SPAN =
+class=3D"comment">/* 1 */</SPAN>=0A=
+    <SPAN class=3D"rule"><SPAN class=3D"attribute">display</SPAN>:<SPAN =
+class=3D"value"> table</SPAN></SPAN>; <SPAN class=3D"comment">/* 2 =
+*/</SPAN>=0A=
+<SPAN class=3D"rule">}</SPAN></SPAN>=0A=
+=0A=
+<SPAN class=3D"class">.cf</SPAN><SPAN class=3D"pseudo">:after</SPAN> =
+<SPAN class=3D"rules">{=0A=
+    <SPAN class=3D"rule"><SPAN class=3D"attribute">clear</SPAN>:<SPAN =
+class=3D"value"> both</SPAN></SPAN>;=0A=
+<SPAN class=3D"rule">}</SPAN></SPAN>=0A=
+=0A=
+<SPAN class=3D"comment">/**=0A=
+ * For IE 6/7 only=0A=
+ * Include this rule to trigger hasLayout and contain floats.=0A=
+ */</SPAN>=0A=
+<SPAN class=3D"class">.cf</SPAN> <SPAN class=3D"rules">{=0A=
+    <SPAN class=3D"rule">*<SPAN class=3D"attribute">zoom</SPAN>:<SPAN =
+class=3D"value"> <SPAN class=3D"number">1</SPAN></SPAN></SPAN>;=0A=
+<SPAN class=3D"rule">}</SPAN></SPAN>=0A=
+</CODE></PRE>
+<P>This =E2=80=9Cmicro clearfix=E2=80=9D generates pseudo-elements and =
+sets their=20
+<CODE>display</CODE> to <CODE>table</CODE>. This creates an <A =
+href=3D"http://www.w3.org/TR/CSS2/tables.html#anonymous-boxes">anonymous
+ table-cell</A> and a new block formatting context that means the=20
+<CODE>:before</CODE> pseudo-element prevents top-margin collapse. The=20
+<CODE>:after</CODE> pseudo-element is used to clear the floats. As a =
+result,=20
+there is no need to hide any generated content and the total amount of =
+code=20
+needed is reduced.</P>
+<P>Including the <CODE>:before</CODE> selector is <EM>not</EM> necessary =
+to=20
+clear the floats, but it <STRONG>prevents</STRONG> top-margins from =
+collapsing=20
+in modern browsers. This has two benefits:</P>
+<UL>
+  <LI>It ensures visual consistency with other float containment =
+techniques that
+   create a new block formatting context, e.g.,=20
+<CODE>overflow:hidden</CODE></LI>
+  <LI>It ensures visual consistency with IE 6/7 when <CODE>zoom:1</CODE> =
+is=20
+  applied.</LI></UL>
+<P><STRONG>N.B.</STRONG>: There are circumstances in which IE 6/7 will =
+not=20
+contain the bottom margins of floats within a new block formatting =
+context.=20
+Further details can be found here: <A =
+href=3D"http://nicolasgallagher.com/better-float-containment-in-ie/">Bett=
+er=20
+float containment in IE using CSS expressions</A>.</P>
+<P>The use of <CODE>content:" "</CODE> (note the space in the content =
+string)=20
+avoids an <A href=3D"http://codepen.io/anon/full/9454/4">Opera bug</A> =
+that=20
+creates space around clearfixed elements if the =
+<CODE>contenteditable</CODE>=20
+attribute is also present somewhere in the HTML. Thanks to Sergio =
+Cerrutti for=20
+spotting this fix. An alternative fix is to use <CODE>font:0/0 =
+a</CODE>.</P>
+<H2 id=3D"legacy-firefox">Legacy Firefox</H2>
+<P>Firefox &lt; 3.5 will benefit from using Thierry=E2=80=99s method =
+with the addition=20
+of <CODE>visibility:hidden</CODE> to hide the inserted character. This =
+is=20
+because legacy versions of Firefox need <CODE>content:"."</CODE> to =
+avoid extra=20
+space appearing between the <CODE>body</CODE> and its first child =
+element, in=20
+certain circumstances (e.g., <A=20
+href=3D"http://jsfiddle.net/necolas/K538S/">jsfiddle.net/necolas/K538S/</=
+A>.)</P>
+<P>Alternative float-containment methods that create a new block =
+formatting
+ context, such as applying <CODE>overflow:hidden</CODE> or=20
+<CODE>display:inline-block</CODE> to the container element, will also =
+avoid this=20
+behaviour in legacy versions of =
+Firefox.</P></DIV></DIV></ARTICLE><FOOTER class=3D"Footer"=20
+role=3D"contentinfo">
+<DIV class=3D"Container">
+<DIV class=3D"HzLine"></DIV>
+<P><SMALL>Nicolas Gallagher lives and works in San Francisco. He's on    =
+   <A=20
+href=3D"https://mobile.twitter.com/necolas">Twitter</A> and shares =
+software using =20
+     <A href=3D"https://github.com/necolas">GitHub</A>.       </SMALL>   =
+ =20
+</P></DIV></FOOTER></DIV></BODY></HTML>
+
+------=_NextPart_000_000E_01D397A9.B14C2120
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.gravatar.com/avatar/9eecfabc23fd999927fa7989a7eaff5f.png?v=3&s=50
+
+/9j/4AAQSkZJRgABAQAAAQABAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcg
+SlBFRyB2NjIpLCBxdWFsaXR5ID0gOTAK/9sAQwADAgIDAgIDAwMDBAMDBAUIBQUEBAUKBwcGCAwK
+DAwLCgsLDQ4SEA0OEQ4LCxAWEBETFBUVFQwPFxgWFBgSFBUU/9sAQwEDBAQFBAUJBQUJFA0LDRQU
+FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU/8AAEQgAMgAy
+AwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMF
+BQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkq
+NDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqi
+o6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/E
+AB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMR
+BAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVG
+R0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKz
+tLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A
+9z0X4v8AgK5sLbxC/hHxL4cGxtt3bQFdicbhtikD7flU4KY+UHsK0NZ+NHwu+GPhjTrm78TX/wBk
+1cl4bC5095ZSgwPMMUgjZVyo+Y8McsM5JrmfhLp+j2/7GWkavqVlFcx6fpNzePuX5jseVsA9eduK
+/OrxD4k1HxTrU+p6jcSXF3M3UsSEUcKijsqgAADoAAOlAH6aeBP2qvhDrhaKfV7+OVIUimvNSsVj
+N2CcBSqsdzA88cAOcDnj0HwvYXN54dtbi1ng1610+4b7FJpkuQ0RHMcu4giQLtADYII+9jIr81Ph
+F8C/HnjfUre60Ow8nYwcXd4/lR5z0B6n8Biv0G+BPwF8TfCnwRqdy2sQ3GtTOZ5bG33JBsJBkRT2
+Yrna23g46jGADodd8O3Fo7y3GoOtrbW00UglgBt3gmLEcHlnj27QME4OB98kcD8NGtbT49eMV02P
+ZJa2LTSkQ7fNlO/EgzgSFlVSzDgtuxwK5/4H/EX4oeLbzxnpVz4kN5c6FrAsI2urSIl0O75mKocc
+KOme/JrasviB4jj+PcnhXxVpGkeZZaab+HVdMlaxu7kOEQoVMhV+WPGQD5fUH5aAPItSvPiHqGo3
+V1Z+I9KtLOeV5YbeRZN0SMSVU/J1AIH4UV69qXw98D6tqN1fT6p4rSe5leaRRpt6gDMSSNvkccnp
+RQBa/Zn0K28V/sk6Bo2oZNnqOnXVlLtODseWZDj3wa/NnxD4Nn8JeOL/AEO9dZPsV7LamePlJTG5
+Ulfrt/Wv03/ZJVk/Z18Goy7dkU4I6YxcS186/tnfASbwxqV5440pUfSr64R5olGGtZzklsY+65JO
+c8M2O4oAxvgX8R/F/h+2ePRdN+2NbqTGoty6bQCdrSGRQhIzjhjyOBmvr/4O/FfX/jDp+j6toRt7
+SBLlodatZZB5kRG7aANjZyNvPGeeRjB+PPgD8ZoPDXhDUrGewlv5o4Zp1gixkgBBxnvl8/RTXvf7
+CGl3+naJr96ZcRX8qyx20akbCuOSzKMsTkEA4GOOvAB7X8N/AEPhr4qeOWit1jhuotMuNyj77BZ0
+Yn1OFXmqGueE4H/anstTl2MJvDMluIyBhh5vQjv3P5eleqaXbMnjLVZy+RJZWq7cd1efJ/8AHv0r
+ktft5l+OejTZBgfSZxjd/ddTwOvUj2/qANfwBaM7FbeFVJ4AjAAH5UV1YucAAnH4UUAfPHwb8Y+H
+Ph58GNBs9Tu3kvLRZ2msrSMyTJunkYBlHQ4IOCRXi37Sf7Zfhfxn8P8AWfCFl4Z1eC6u5ERLm+Ec
+aBVcNvwGJzleF9+vGDR/Z21aLW9JvrHUJDPcQZMTscu6AZKk9yB830z6V6D4x/Z68N/FTQxdQoTI
+BjzIT+8Q/wBaAPkDR/hr4qm0ePVvDMB1C2kG7dAyll4ORg+xI4r7i/ZB0Px1YaHc6p4l8PWOmW0k
+S7b4FEnZV4KlVycnAOTivnbwh4O+In7N3iA3WkQ23inw3cuU+yy5Ec3YpnrDL2GeGOANx4r6f+E3
+7R3hb4reHNX8MWllqfhy8mtJYnRijm3d1K7kYEElScgkDkUAfRunOP8AhI7rJB3WkRx/wKSuX8UK
+yfF/wrICoRtOvkYHqeYSMfrXkHiL4p+LPg9qFpqt/pMerWbWqNf2tnlz5YAaR7ZyFyY2LExMBlfm
+UrhhXU6l4zvfHl14Z8Y+Dn0rXbVI3NujTPC0kUvDAZyC4KDglcYYHpigDv5dThjldTNgqSCM/wD1
+qK4KbU9aMrmTTzHJuO5Pm+U9x0ooA+JP2c3ZfGWmhWIDaptIB6j+z5uPpX098D5XF0Iw7CPyl+TP
+H3V7UUUAbGtxqnj4W6qFgnSQSxAfLJ/vDofxr5a+KMr+G/2w9EbSHbSzcm0ac2R8nzS4+cttxu3d
+89e9FFAH3B8Rokk8IBmRWZGgKsRkqd2Mj04JH4183/seyOt74uswxFnb+KMQ24P7uMfMcKvQc88U
+UUAfakUjiNPnboO9FFFAH//Z
+
+------=_NextPart_000_000E_01D397A9.B14C2120
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://nicolasgallagher.com/build.9d09d166411d42ca9c128150826b010f.css
+
+@font-face {
+	font-family: icons;
+	src: url(icon/./fonts/icons.eot);
+}
+@font-face {
+	font-family: icons;
+	src: =
+url(data:application/x-font-ttf;charset=3Dutf-8;base64,AAEAAAALAIAAAwAwT1=
+MvMg6yAy4AAAC8AAAAYGNtYXDl8+a9AAABHAAAAExnYXNwAAAAEAAAAWgAAAAIZ2x5ZjRgOPw=
+AAAFwAAADNGhlYWQByCkeAAAEpAAAADZoaGVhCL0EwAAABNwAAAAkaG10eBJ1AAAAAAUAAAAA=
+GGxvY2ECUAGMAAAFGAAAAA5tYXhwAAkATgAABSgAAAAgbmFtZbxOH+UAAAVIAAABJ3Bvc3QAA=
+wAAAAAGcAAAACAAAwQAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAA=
+ABEAAAAAAAAAAAAAAAAAAAAABAACDmBAPA/8D/wAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAA=
+CAAAAAwAAABQAAwABAAAAFAAEADgAAAAKAAgAAgACACDmAuYE//3//wAAACDmAOYE//3////h=
+GgIaAQADAAEAAAAAAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAABAAAACgOYA=
+4MAOAAAJRQXBgcGIyInJi8BBwYjIicmJyY/AScmJyY1NDc2NzYXNxM2NzYXNxYXFhcTNxYXFh=
+cWDwEfATIHAwkBAhMTFBUMDAHU0hQUFBMTBQYIVssQCAgCCQ8UFPxQBBISFgEVEhIFUPwVEwo=
+PCCbNVQUCAVQFAx4SEgYGAaCgDQwPFRYR+n0KEBMGCgwaCQ8CAgEAEwwRAwMDChAR/vsDAwoL=
+GDQWge4RCAABAAAAawP8Az8AKgAAJQYjIicBJicmNTQ3ATY3NhcWFxYHFzcWFxYHFgcGJwYnJ=
+ic2JyYrAQcWBwHcCg0NE/52DAcIGwGKEBMUDREJDAICgZhobAICHxsrJx4bAgIyLkeBAgInbQ=
+IOASgGEQ4PIBQBKQoDAQgIDxIRxwEBaWuVKhweAQEfHiZFMDDGJhUAAAACAAAARwT6A0QAJgB=
+LAAABMzUhIicmNTQ3NhclFhcWFRE3FhcWBwYHAwYHJicmJwMmJyY3NjcFJRYXFhcGBwYnBSYn=
+JicTByYnJjc2NxM2NxYfARYVFAcGBycVAzxg/uEoHBwcHCgBfigcHGAoEQcBAwnBFhcVDAsMv=
+wsBBSMOE/4hASAnHRsBARsdJ/6AJh0bAQFhDxIfAQIKwREhIBK7EhMTGmABxcAcHCcoGx0BAQ=
+EbHSf+4AEBIhIRFAz/ABgBAQYGDAEADBMoFQgBwAEBGx0mKRsdAQEBGx0mASABAQkUKBEQAQE=
+XAQEX+xgYFhQSAQHAAAAAAAEAAAAwA+YDWwBJAAABFBcVFAcGBwYHBiMiJxY7ATI3JicmJxYX=
+NxY3FjcyNzY3NjEmJyYnNxYzJicmNyY3NjcWFxYXJjcmNzYXNhc2NwYHBgc2NwYPAQOAAScnS=
+ktuboisjgwYDYxyQDY3Eg8ECgMHCAYJCAwCBkUwLQICJzYuFBsCAgcEEU1tbn4GAQE9O1dVQE=
+c7DhUcG0A1JEICAoQFAgdnZ2hVVTMzXANXASgpPAIBAQIBAQECAgEBDjk5SQMaHissKioUFR9=
+fNzkHJApWOz0BAUIRISMeHRMMFDY0DAAAAAEAAAABAAA04SWMXw889QALBAAAAAAAztfyTwAA=
+AADO1/JPAAAAAAT6A4MAAAAIAAIAAAAAAAAAAQAAA8D/wAAABPoAAP//BPoAAQAAAAAAAAAAA=
+AAAAAAAAAYAAAAAAgAAAAOaAAAD/AAABPoAAAPlAAAAAAAAAAoAZACsASgBmgAAAAEAAAAGAE=
+wAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAKAAAAAQAAAAAAAgAOADk=
+AAQAAAAAAAwAKACAAAQAAAAAABAAKAEcAAQAAAAAABQAWAAoAAQAAAAAABgAFACoAAQAAAAAA=
+CgAoAFEAAwABBAkAAQAKAAAAAwABBAkAAgAOADkAAwABBAkAAwAKACAAAwABBAkABAAKAEcAA=
+wABBAkABQAWAAoAAwABBAkABgAKAC8AAwABBAkACgAoAFEAaQBjAG8AbgBzAFYAZQByAHMAaQ=
+BvAG4AIAAwAC4AMABpAGMAbwBuAHNpY29ucwBpAGMAbwBuAHMAUgBlAGcAdQBsAGEAcgBpAGM=
+AbwBuAHMARwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAAADAAAAAAAA=
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA) format("truetype"), =
+url(data:application/font-woff;charset=3Dutf-8;base64,d09GRgABAAAAAAbcAAs=
+AAAAABpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABCAAAAGAAAABgDrIDLmNtYXAA=
+AAFoAAAATAAAAEzl8+a9Z2FzcAAAAbQAAAAIAAAACAAAABBnbHlmAAABvAAAAzQAAAM0NGA4/=
+GhlYWQAAATwAAAANgAAADYByCkeaGhlYQAABSgAAAAkAAAAJAi9BMBobXR4AAAFTAAAABgAAA=
+AYEnUAAGxvY2EAAAVkAAAADgAAAA4CUAGMbWF4cAAABXQAAAAgAAAAIAAJAE5uYW1lAAAFlAA=
+AAScAAAEnvE4f5XBvc3QAAAa8AAAAIAAAACAAAwAAAAMEAAGQAAUAAAKZAswAAACPApkCzAAA=
+AesAMwEJAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAg5gQDwP/A/8ADwABAA=
+AAAAQAAAAAAAAAAAAAAIAAAAAAAAgAAAAMAAAAUAAMAAQAAABQABAA4AAAACgAIAAIAAgAg5g=
+LmBP/9//8AAAAg5gDmBP/9////4RoCGgEAAwABAAAAAAAAAAAAAAABAAH//wAPAAEAAAAAAAA=
+AAAACAAA3OQEAAAAAAQAAAAoDmAODADgAACUUFwYHBiMiJyYvAQcGIyInJicmPwEnJicmNTQ3=
+Njc2FzcTNjc2FzcWFxYXEzcWFxYXFg8BHwEyBwMJAQITExQVDAwB1NIUFBQTEwUGCFbLEAgIA=
+gkPFBT8UAQSEhYBFRISBVD8FRMKDwgmzVUFAgFUBQMeEhIGBgGgoA0MDxUWEfp9ChATBgoMGg=
+kPAgIBABMMEQMDAwoQEf77AwMKCxg0FoHuEQgAAQAAAGsD/AM/ACoAACUGIyInASYnJjU0NwE=
+2NzYXFhcWBxc3FhcWBxYHBicGJyYnNicmKwEHFgcB3AoNDRP+dgwHCBsBihATFA0RCQwCAoGY=
+aGwCAh8bKyceGwICMi5HgQICJ20CDgEoBhEODyAUASkKAwEICA8SEccBAWlrlSocHgEBHx4mR=
+TAwxiYVAAAAAgAAAEcE+gNEACYASwAAATM1ISInJjU0NzYXJRYXFhURNxYXFgcGBwMGByYnJi=
+cDJicmNzY3BSUWFxYXBgcGJwUmJyYnEwcmJyY3NjcTNjcWHwEWFRQHBgcnFQM8YP7hKBwcHBw=
+oAX4oHBxgKBEHAQMJwRYXFQwLDL8LAQUjDhP+IQEgJx0bAQEbHSf+gCYdGwEBYQ8SHwECCsER=
+ISASuxITExpgAcXAHBwnKBsdAQEBGx0n/uABASISERQM/wAYAQEGBgwBAAwTKBUIAcABARsdJ=
+ikbHQEBARsdJgEgAQEJFCgREAEBFwEBF/sYGBYUEgEBwAAAAAABAAAAMAPmA1sASQAAARQXFR=
+QHBgcGBwYjIicWOwEyNyYnJicWFzcWNxY3Mjc2NzYxJicmJzcWMyYnJjcmNzY3FhcWFyY3Jjc=
+2FzYXNjcGBwYHNjcGDwEDgAEnJ0pLbm6IrI4MGA2MckA2NxIPBAoDBwgGCQgMAgZFMC0CAic2=
+LhQbAgIHBBFNbW5+BgEBPTtXVUBHOw4VHBtANSRCAgKEBQIHZ2doVVUzM1wDVwEoKTwCAQECA=
+QEBAgIBAQ45OUkDGh4rLCoqFBUfXzc5ByQKVjs9AQFCESEjHh0TDBQ2NAwAAAABAAAAAQAANO=
+EljF8PPPUACwQAAAAAAM7X8k8AAAAAztfyTwAAAAAE+gODAAAACAACAAAAAAAAAAEAAAPA/8A=
+AAAT6AAD//wT6AAEAAAAAAAAAAAAAAAAAAAAGAAAAAAIAAAADmgAAA/wAAAT6AAAD5QAAAAAA=
+AAAKAGQArAEoAZoAAAABAAAABgBMAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAA=
+AAAAAEACgAAAAEAAAAAAAIADgA5AAEAAAAAAAMACgAgAAEAAAAAAAQACgBHAAEAAAAAAAUAFg=
+AKAAEAAAAAAAYABQAqAAEAAAAAAAoAKABRAAMAAQQJAAEACgAAAAMAAQQJAAIADgA5AAMAAQQ=
+JAAMACgAgAAMAAQQJAAQACgBHAAMAAQQJAAUAFgAKAAMAAQQJAAYACgAvAAMAAQQJAAoAKABR=
+AGkAYwBvAG4AcwBWAGUAcgBzAGkAbwBuACAAMAAuADAAaQBjAG8AbgBzaWNvbnMAaQBjAG8Ab=
+gBzAFIAZQBnAHUAbABhAHIAaQBjAG8AbgBzAEcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQ=
+BjAG8ATQBvAG8AbgAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=3D=3D) =
+format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+article {
+	display: block;
+}
+aside {
+	display: block;
+}
+details {
+	display: block;
+}
+figcaption {
+	display: block;
+}
+figure {
+	display: block;
+}
+footer {
+	display: block;
+}
+header {
+	display: block;
+}
+hgroup {
+	display: block;
+}
+main {
+	display: block;
+}
+nav {
+	display: block;
+}
+section {
+	display: block;
+}
+summary {
+	display: block;
+}
+audio {
+	display: inline-block;
+}
+canvas {
+	display: inline-block;
+}
+video {
+	display: inline-block;
+}
+audio:not([controls]) {
+	height: 0px; display: none;
+}
+[hidden] {
+	display: none;
+}
+template {
+	display: none;
+}
+html {
+	font-family: sans-serif; -ms-text-size-adjust: 100%; =
+-webkit-text-size-adjust: 100%;
+}
+body {
+	margin: 0px;
+}
+a {
+	background: 0px 0px;
+}
+a:focus {
+	outline: dotted thin;
+}
+abbr[title] {
+	border-bottom-color: currentColor; border-bottom-width: 1px; =
+border-bottom-style: dotted;
+}
+b {
+	font-weight: 700;
+}
+strong {
+	font-weight: 700;
+}
+dfn {
+	font-style: italic;
+}
+hr {
+	height: 0px; box-sizing: content-box; -moz-box-sizing: content-box; =
+-webkit-box-sizing: content-box;
+}
+mark {
+	background: rgb(255, 255, 0);
+}
+q {
+	quotes: "=93" "=94" "=91" "=92";
+}
+sub {
+	line-height: 0; font-size: 75%; vertical-align: baseline; position: =
+relative;
+}
+sup {
+	line-height: 0; font-size: 75%; vertical-align: baseline; position: =
+relative;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+img {
+	border: 0px currentColor; border-image: none;
+}
+svg:not(:root) {
+	overflow: hidden;
+}
+figure {
+	margin: 0px;
+}
+fieldset {
+	margin: 0px 2px; padding: 0.35em 0.62em 0.75em; border: 1px solid =
+silver; border-image: none;
+}
+legend {
+	padding: 0px; border: 0px currentColor; border-image: none;
+}
+button {
+	margin: 0px; font-family: inherit; font-size: 100%;
+}
+input {
+	margin: 0px; font-family: inherit; font-size: 100%;
+}
+select {
+	margin: 0px; font-family: inherit; font-size: 100%;
+}
+textarea {
+	margin: 0px; font-family: inherit; font-size: 100%;
+}
+button {
+	line-height: normal;
+}
+input {
+	line-height: normal;
+}
+button {
+	text-transform: none;
+}
+select {
+	text-transform: none;
+}
+button {
+	cursor: pointer; -webkit-appearance: button;
+}
+html input[type=3D'button'] {
+	cursor: pointer; -webkit-appearance: button;
+}
+input[type=3D'reset'] {
+	cursor: pointer; -webkit-appearance: button;
+}
+input[type=3D'submit'] {
+	cursor: pointer; -webkit-appearance: button;
+}
+button[disabled] {
+	cursor: default;
+}
+html input[disabled] {
+	cursor: default;
+}
+input[type=3D'checkbox'] {
+	padding: 0px; box-sizing: border-box; -moz-box-sizing: border-box; =
+-webkit-box-sizing: border-box;
+}
+input[type=3D'radio'] {
+	padding: 0px; box-sizing: border-box; -moz-box-sizing: border-box; =
+-webkit-box-sizing: border-box;
+}
+input[type=3D'search'] {
+	box-sizing: content-box; -moz-box-sizing: content-box; =
+-webkit-box-sizing: content-box; -webkit-appearance: textfield;
+}
+textarea {
+	overflow: auto; vertical-align: top;
+}
+table {
+	border-collapse: collapse; border-spacing: 0;
+}
+html {
+	color: rgb(51, 51, 51); line-height: 1.3888; font-family: =
+-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica =
+Neue",sans-serif; font-size: 18px;
+}
+body {
+	background: rgb(255, 255, 255);
+}
+a {
+	color: rgb(0, 102, 153); text-decoration: none;
+}
+a:visited {
+	color: rgb(0, 102, 153); text-decoration: none;
+}
+a:hover {
+	background: rgb(0, 102, 153); border: 0px currentColor; border-image: =
+none; color: rgb(255, 255, 255);
+}
+a:focus {
+	background: rgb(0, 102, 153); border: 0px currentColor; border-image: =
+none; color: rgb(255, 255, 255);
+}
+a:active {
+	background: rgb(0, 102, 153); border: 0px currentColor; border-image: =
+none; color: rgb(255, 255, 255);
+}
+a:hover {
+	outline: 0px;
+}
+a:active {
+	outline: 0px;
+}
+h1 {
+	color: rgb(34, 34, 34);
+}
+h2 {
+	color: rgb(34, 34, 34);
+}
+h1 {
+	font-weight: 700;
+}
+h2 {
+	font-weight: 700;
+}
+h3 {
+	font-weight: 700;
+}
+h3 {
+	margin: 0px 0px 1.38rem; color: rgb(34, 34, 34);
+}
+h4 {
+	margin: 0px 0px 1.38rem; color: rgb(34, 34, 34);
+}
+h1 {
+	margin: 0px; line-height: 1.2; font-size: 2.5em;
+}
+h2 {
+	margin: 2.77rem 0px 1.38rem; font-size: 1.55em;
+}
+h3 {
+	font-size: 1.22em;
+}
+h4 {
+	font-size: 1em; font-weight: 700;
+}
+abbr[title] {
+	border: 0px currentColor; border-image: none; text-decoration: none;
+}
+mark {
+	color: rgb(0, 0, 0); font-weight: 700; background-color: rgb(255, 238, =
+102);
+}
+ins {
+	text-decoration: none;
+}
+small {
+	font-size: 0.83em;
+}
+pre {
+	font-family: consolas,monospace,x;
+}
+code {
+	font-family: consolas,monospace,x;
+}
+kbd {
+	font-family: consolas,monospace,x;
+}
+samp {
+	font-family: consolas,monospace,x;
+}
+code {
+	font-size: 1em;
+}
+kbd {
+	font-size: 1em;
+}
+samp {
+	font-size: 1em;
+}
+pre {
+	border-width: 1px 1px 1px 5px; border-style: solid; border-color: =
+rgb(230, 230, 230); margin: 0px 0px 1.38rem; padding: 1.25em; =
+border-image: none; font-size: 0.88em; white-space: pre; -ms-overflow-x: =
+auto;
+}
+pre code {
+	color: rgb(68, 68, 68);
+}
+a code {
+	background: 0px 0px; color: inherit;
+}
+p {
+	margin: 0px 0px 1.38em;
+}
+blockquote {
+	margin: 0px 0px 1.38em;
+}
+blockquote {
+	padding: 0px 10px 0px 20px; color: rgb(119, 119, 119); =
+border-left-color: rgb(221, 221, 221); border-left-width: 5px; =
+border-left-style: solid;
+}
+blockquote blockquote {
+	border: 0px currentColor; border-image: none;
+}
+ul {
+	list-style: square;
+}
+ul {
+	margin: 0px 0px 1.38em; padding: 0px;
+}
+ol {
+	margin: 0px 0px 1.38em; padding: 0px;
+}
+ul li {
+	margin: 0px 0px 0.7em; padding: 0px;
+}
+ol li {
+	margin: 0px 0px 0.7em; padding: 0px;
+}
+nav ul {
+	list-style: none;
+}
+nav ol {
+	list-style: none;
+}
+@media screen and (max-width:480px)
+{
+html {
+	font-size: 16px;
+}
+pre {
+	padding: 0.75em;
+}
+}
+@media screen and (min-width:480px)
+{
+blockquote {
+	margin-left: -25px;
+}
+blockquote blockquote {
+	margin-left: 0px;
+}
+}
+@media print
+{
+* {
+	background: none !important; color: rgb(0, 0, 0) !important;
+}
+a {
+	border: 0px currentColor; border-image: none; text-decoration: none;
+}
+a:visited {
+	border: 0px currentColor; border-image: none; text-decoration: none;
+}
+img {
+	border: 0px currentColor; border-image: none; max-width: 100% =
+!important;
+}
+img {
+	page-break-inside: avoid;
+}
+pre {
+	page-break-inside: avoid;
+}
+blockquote {
+	page-break-inside: avoid;
+}
+h1 {
+	page-break-after: avoid;
+}
+h2 {
+	page-break-after: avoid;
+}
+h3 {
+	page-break-after: avoid;
+}
+p {
+	orphans: 3; widows: 3;
+}
+h2 {
+	orphans: 3; widows: 3;
+}
+h3 {
+	orphans: 3; widows: 3;
+}
+}
+.Content {
+	margin: 1.38em 0px;
+}
+.Container {
+	margin: 0px auto; padding: 0px 20px; position: relative; max-width: =
+620px;
+}
+@media screen and (max-width:400px)
+{
+.Container {
+	padding-right: 10px; padding-left: 10px;
+}
+}
+.HzLine {
+	background: rgb(221, 221, 221); margin: 2.5em 0px 1.38em; height: 1px;
+}
+.Footer {
+	color: rgb(117, 117, 117); margin-top: 3em;
+}
+.Header {
+	padding: 1.38em 0px; position: relative;
+}
+.Header-logo {
+	display: block;
+}
+.Header-logo a {
+	margin: 0px auto; border-radius: 100%; border: 0px currentColor; =
+border-image: none; width: 50px; vertical-align: top; display: =
+inline-block;
+}
+.Header-logo a {
+	white-space: nowrap; position: relative;
+}
+.Header-prompt {
+	white-space: nowrap; position: relative;
+}
+.Header-prompt {
+	background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 3px; =
+text-align: center; color: rgb(255, 255, 255); line-height: 1.2; =
+font-size: 0.82em; margin-left: 15px; vertical-align: middle; display: =
+none;
+}
+.Header-prompt::before {
+	border-width: 5px 5px 5px 0px; border-style: solid; border-color: =
+transparent rgba(0, 0, 0, 0.5); left: -5px; top: 50%; margin-top: -5px; =
+position: absolute; content: "";
+}
+.Header-logo a:hover .Header-prompt {
+	display: inline-block;
+}
+.Header-logo a:focus .Header-prompt {
+	display: inline-block;
+}
+.Header-logo a:hover {
+	background: 0px 0px; box-shadow: 0px 0px 0px 5px #eee; =
+-webkit-box-shadow: 0 0 0 5px #eee;
+}
+.Header-logo a:focus {
+	background: 0px 0px; box-shadow: 0px 0px 0px 5px #eee; =
+-webkit-box-shadow: 0 0 0 5px #eee;
+}
+.Header-logo a:active {
+	background: 0px 0px; box-shadow: 0px 0px 0px 5px #eee; =
+-webkit-box-shadow: 0 0 0 5px #eee;
+}
+.Header-logo img {
+	border-radius: 100%; vertical-align: middle;
+}
+.NotFound {
+	text-align: center; color: rgb(85, 85, 85);
+}
+.NotFound-title {
+	margin: 0px 0px 4em; color: rgb(204, 204, 204); text-transform: =
+uppercase; font-size: 1em; font-weight: 700;
+}
+.NotFound-titleLarge {
+	font-size: 6em; display: block;
+}
+.NotFound-titleSmall {
+	font-size: 1.75em; display: block;
+}
+.FlexEmbed {
+	overflow: hidden; display: block; position: relative;
+}
+.FlexEmbed::before {
+	width: 100%; display: block; content: "";
+}
+.FlexEmbed--3by1::before {
+	padding-bottom: 33.33%;
+}
+.FlexEmbed--2by1::before {
+	padding-bottom: 50%;
+}
+.FlexEmbed--16by9::before {
+	padding-bottom: 56.25%;
+}
+.FlexEmbed--4by3::before {
+	padding-bottom: 75%;
+}
+.FlexEmbed-item {
+	left: 0px; top: 0px; width: 100%; height: 100%; bottom: 0px; position: =
+absolute;
+}
+.FlexEmbed iframe {
+	left: 0px; top: 0px; width: 100%; height: 100%; bottom: 0px; position: =
+absolute;
+}
+.FlexEmbed embed {
+	left: 0px; top: 0px; width: 100%; height: 100%; bottom: 0px; position: =
+absolute;
+}
+.FlexEmbed object {
+	left: 0px; top: 0px; width: 100%; height: 100%; bottom: 0px; position: =
+absolute;
+}
+.u-isActionable {
+	cursor: pointer !important;
+}
+.u-isDisabled {
+	cursor: default !important;
+}
+.u-isDraggable {
+	cursor: move !important;
+}
+.u-isHidden {
+	display: none !important; visibility: hidden !important;
+}
+.u-isHiddenVisually {
+	padding: 0px !important; border: 0px currentColor !important; =
+border-image: none !important; width: 1px !important; height: 1px =
+!important; overflow: hidden !important; position: absolute !important; =
+clip: rect(1px, 1px, 1px, 1px) !important;
+}
+.u-isInvisible {
+	visibility: hidden !important;
+}
+.u-isVisible {
+	visibility: visible !important;
+}
+.Icon {
+	font: 400 28px "icons"; height: 28px; text-transform: none; =
+vertical-align: middle; display: inline-block; cursor: inherit; speak: =
+none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: =
+grayscale;
+}
+.Icon::before {
+	display: block;
+}
+.Icon--favorite::before {
+	content: "\e600";
+}
+.Icon--reply::before {
+	content: "\e601";
+}
+.Icon--retweet::before {
+	content: "\e602";
+}
+.Icon--twitter::before {
+	content: "\e604";
+}
+.Timestamp {
+	color: rgb(117, 117, 117); font-size: 0.75em; display: inline-block;
+}
+.twitter-timeline {
+	font-weight: 700;
+}
+.Article-header {
+	margin: 0px 0px 2em;
+}
+.Article-body > p:first-child {
+	font-size: 1.22em;
+}
+.Article-data {
+	margin-bottom: 1.25em;
+}
+.Article-timestamp {
+	font-size: 0.87em;
+}
+.Article-coverImage {
+	background-position: 50%; margin: 1.5em auto 2.5em; max-height: 1000px; =
+max-width: 2000px; background-repeat: no-repeat; background-size: cover; =
+background-color: rgb(255, 255, 255); -webkit-background-size: cover;
+}
+.Article-body img {
+	display: block; max-width: 100%;
+}
+.Article-body a {
+	text-decoration: underline; text-decoration-skip: ink;
+}
+.Article-body a:hover {
+	text-decoration: none;
+}
+.Article-body a:focus {
+	text-decoration: none;
+}
+.Article-body figure {
+	margin: 0px 0px 1.5em;
+}
+.Article-body figure figcaption {
+	line-height: 1.4; font-size: 0.83em; margin-top: 0.5rem;
+}
+.Article-body pre + p > small:first-child {
+	margin: -1em 0px 0px; font-size: 0.83em; display: block;
+}
+@media screen and (max-width:580px)
+{
+.Article-body ul {
+	padding-left: 20px;
+}
+.Article-body ol {
+	padding-left: 20px;
+}
+}
+@media screen and (max-width:620px)
+{
+.Article-body img {
+	width: 100%; height: auto;
+}
+}
+.Article-responses {
+	margin-top: 4em;
+}
+.Article-responses .twitter-timeline-rendered {
+	margin: 1em 0px 0px;
+}
+@media print
+{
+.Article-body a[href] {
+	text-decoration: none !important;
+}
+.Article-body a[href]::after {
+	content: " (" attr(href)")";
+}
+}
+.u-textCenter {
+	text-align: center !important;
+}
+.u-textLeft {
+	text-align: left !important;
+}
+.u-textRight {
+	text-align: right !important;
+}
+.u-textTruncate {
+	overflow: hidden !important; white-space: nowrap !important; =
+-ms-word-wrap: normal !important; -ms-text-overflow: ellipsis =
+!important; max-width: 100%;
+}
+.u-textBreak {
+	-ms-word-wrap: break-word !important;
+}
+.u-textInheritColor {
+	color: inherit !important;
+}
+.u-textInheritAllColor {
+	color: inherit !important;
+}
+.u-textInheritAllColor:hover {
+	color: inherit !important;
+}
+.u-textInheritAllColor:focus {
+	color: inherit !important;
+}
+.u-textInheritAllColor:active {
+	color: inherit !important;
+}
+.List {
+	list-style: none; margin: 0px; padding: 0px;
+}
+.List-item {
+	margin: 0px 0px 0.75em; padding: 0.75em 0px 0px; line-height: 1.2; =
+font-size: 1.11em;
+}
+.List-timestamp {
+	margin: 0px 0px 0px 20px; float: right;
+}
+@media screen and (max-width:340px)
+{
+.List-timestamp {
+	margin: 0px; float: none; display: block;
+}
+}
+
+------=_NextPart_000_000E_01D397A9.B14C2120--

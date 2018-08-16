@@ -1,0 +1,164 @@
+/*----------------------
+MY PORTFOLIO PROJECT
+#02b3e4 lightBlue;
+#2d3c49 darkGray;
+#7d97ad lightGray;
+----------------------*/
+
+/* STYLE THE POSITIONING AND APPEARANCE FOR THE BODY AND HTML VIEWPORT */
+html {
+    background-color: #ede6e6;    
+}
+
+
+body {
+    background-color: #ccc;
+    margin: 0 auto;
+    width: 960px;
+    font-family: sans-sefig, arial, helvectica;
+}
+
+
+/* STYLE THE POSITIONING AND APPEARANCE FOR MY NAME AND TITLE */
+header {
+    height: 175px;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;    
+    color: #2d3c49;
+}
+
+
+.myNameAndTitle {
+    margin: 0;
+    float: right;
+    margin-right: 20px;
+}
+
+
+/* STYLE THE POSITIONING AND APPEARANCE FOR THE UDACITY NAME AND LOGO */
+#logo {
+    float: left;
+    padding-left: 12px;
+}
+
+
+#logo p {
+    margin: 0;
+    font-size: 18px;
+    margin-left: 45px;
+    color: #02b3e4;
+}
+
+
+/* STYLE THE POSITIONING AND APPEARANCE FOR THE PORTFOLIO'S MENU ITEMS & LINE BREAK */
+ul {
+    float: right;
+    padding: 0;
+}
+
+
+li {
+    display: inline;
+    padding: 15px;
+    font-size: 16px;
+}
+
+
+li a:hover {
+    padding: 10px;
+    background-color: #02b3e4;
+    border: 1px solid black;
+    border-radius: 7px;
+    color: #ede6e6;
+}
+
+
+a {
+    text-decoration: none;
+    color: #373535;
+}
+
+
+.lineBreak {
+    margin-top: -10px;
+    width: 90%;
+    height: .25em;
+}
+
+
+/* INSTALL 'CLEARFIX' TO BALANCE THE CSS AND BROWSER DEFAULTS */
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+
+/* STYLE THE POSITIONING AND APPEARANCE FOR THE TITLE: 'FEATURED WORK' */
+.featuredWork {
+        padding-left: 20px;
+        margin-top: 85px;
+        margin-bottom: -10px;
+        font-size: 30px;
+        color: #7d97ad;
+}
+
+
+/* STYLE THE POSITIONING AND APPEARANCE FOR THE 3 WEBSITE IMAGES */
+.portfolio {
+    position: relative;
+    float: left;
+    margin: 0px;
+    margin-top: 20px;
+}
+
+
+.portfolio img {
+    position: relative;
+    margin-left: 15px;
+}
+
+
+.portfolio p {
+    position: absolute;
+    width: 100%;
+    top: 12px;
+    text-align: center;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+
+.portfolio a:hover {
+    background-color: #02b3e4;
+    color: #ede6e6;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+/* STYLE THE TEXT ALIGNMENT FOR THE TITLE OF THE 3 WEBSITES */
+.projectName {
+    text-align: center;
+}
